@@ -1,4 +1,6 @@
 using Cognito.Test.API.Authorization;
+using Cognito.Test.API.Core;
+using Cognito.Test.API.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
@@ -12,7 +14,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddCognitoIdentity();
+//Add API core and services
+//This should be registered before authentication setup for some reason?
+builder.Services.AddApiServices();
+builder.Services.AddApiCore();
+
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

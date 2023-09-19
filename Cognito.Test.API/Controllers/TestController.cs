@@ -9,7 +9,7 @@ public class TestController : ControllerBase
 {
     [HttpGet]
     [Authorize]
-    [Authorize(Roles = "VIP")]
+    [Authorize(Roles = "Admin")]
     public IActionResult TestEndpoint()
     {
         return Ok("You have been successfully authed against aws Cognito to call this endpoint :)");
