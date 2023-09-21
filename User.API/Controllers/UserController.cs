@@ -15,12 +15,19 @@ public class UserController : ControllerBase
         _userService = userService;
     }
 
-    // [HttpGet]
-    // [Authorize]
-    // public async ActionResult GetUser()
-    // {
-    //     
-    // }
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> GetUser()
+    {
+        var userGuidClaim = HttpContext.User.Claims.FirstOrDefault(cl => string.Equals(cl.Type, "username"))?.Value;
+        if (!Guid.TryParse(userGuidClaim, out var userGuid))
+        {
+            return BadRequest("Token user Guid claim invalid");
+        }
+        
+        var user = await _userService.GetUserAsync(userGuid).ConfigureAwait(false);
+        return Ok(user);
+    }
     
     [HttpPut]
     [Route("password")]

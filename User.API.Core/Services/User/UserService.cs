@@ -5,16 +5,21 @@ namespace User.API.Core.Services.User;
 
 public class UserService: IUserService
 {
-    private readonly IAwsCognitoUserService _awsCognitoUserService;
+    private readonly IExternalUserService _externalUserService;
 
-    public UserService(IAwsCognitoUserService awsCognitoUserService)
+    public UserService(IExternalUserService externalUserService)
     {
-        _awsCognitoUserService = awsCognitoUserService;
+        _externalUserService = externalUserService;
     }
     
     public async Task<Result> UpdateUserPasswordAsync(Guid userGuid, string currentPassword, string newPassword)
     {
-        return await _awsCognitoUserService.UpdatePasswordAsync(userGuid, currentPassword, newPassword)
+        return await _externalUserService.UpdatePasswordAsync(userGuid, currentPassword, newPassword)
             .ConfigureAwait(false);
+    }
+
+    public async Task<Models.User> GetUserAsync(Guid userGuid)
+    {
+        return await _externalUserService.GetUserAsync(userGuid).ConfigureAwait(false);
     }
 }

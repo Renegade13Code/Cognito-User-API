@@ -1,4 +1,6 @@
+using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
+using User.API.AWS.Cognito.Service.AutoMapper;
 using User.API.AWS.Cognito.Service.Service;
 using User.API.Core.Interfaces.Users;
 
@@ -10,9 +12,10 @@ public static class Bootstrapper
     {
         //Add AWS Cognito Services
         services.AddCognitoIdentity();
-        
+
         //Register operations in DI container
-        services.AddScoped<IAwsCognitoUserService, AwsCognitoUserService>();
-        return services;
+        return services
+            .AddSingleton<Profile, AwsCognitoServiceProfile>()
+            .AddScoped<IExternalUserService, AwsCognitoUserService>();
     }
 }

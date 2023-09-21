@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="12.0.1" />
       <ProjectReference Include="..\User.API.Core\User.API.Core.csproj" />
         <PackageReference Include="Amazon.AspNetCore.Identity.Cognito" Version="3.0.1" />
     </ItemGroup>

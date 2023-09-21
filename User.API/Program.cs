@@ -1,3 +1,5 @@
+using System.Reflection;
+using AutoMapper;
 using User.API.Authorization;
 using User.API.Core;
 using User.API.AWS.Cognito.Service;
@@ -18,6 +20,11 @@ builder.Services.AddSwaggerGen();
 //This should be registered before authentication setup for some reason?
 builder.Services.AddAwsCognitoService();
 builder.Services.AddApiCore();
+
+builder.Services.AddAutoMapper((provider, expression) =>
+{
+    expression.AddProfiles(provider.GetServices<Profile>());
+}, new List<Assembly>());
 
 builder.Services.AddAuthentication(options =>
     {

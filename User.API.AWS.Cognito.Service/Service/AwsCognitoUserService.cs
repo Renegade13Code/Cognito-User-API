@@ -1,22 +1,25 @@
 using System.Security.Claims;
 using Amazon.Extensions.CognitoAuthentication;
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using User.API.AWS.Cognito.Service.Models;
 using User.API.Core.Interfaces.Users;
-using User.API.Core.Models;
+using Core = User.API.Core.Models;
 
 namespace User.API.AWS.Cognito.Service.Service;
 
-public class AwsCognitoUserService : IAwsCognitoUserService
+public class AwsCognitoUserService : IExternalUserService
 {
     private readonly UserManager<CognitoUser> _userManager;
+    private readonly IMapper _mapper;
 
-    public AwsCognitoUserService(UserManager<CognitoUser> userManager)
+    public AwsCognitoUserService(UserManager<CognitoUser> userManager, IMapper mapper)
     {
         _userManager = userManager;
+        _mapper = mapper;
     }
     
-    public async Task<Result> UpdatePasswordAsync(Guid userGuid, string currentPassword, string newPassword)
+    public async Task<Core::Result> UpdatePasswordAsync(Guid userGuid, string currentPassword, string newPassword)
     {
         ArgumentNullException.ThrowIfNull(userGuid);
         ArgumentNullException.ThrowIfNull(currentPassword);
@@ -30,20 +33,38 @@ public class AwsCognitoUserService : IAwsCognitoUserService
             
             if (!identityResult.Succeeded)
             {
-                return Result.Fail(identityResult.Errors.Select(x => x.Description));
+                return Core::Result.Fail(identityResult.Errors.Select(x => x.Description));
             }
 
-            return Result.Success();
+            return Core::Result.Success();
         }
         catch (Exception ex)
         {
-            //Log Error
+            //TODO: Log Error
             throw new ExternalServiceException("Exception occured updating Cognito user password", ex);
         }
     }
     
-    public async Task GetUserAsync(ClaimsPrincipal principal)
+    public async Task<Core::User> GetUserAsync(Guid userGuid)
     {
-        var User = await _userManager.GetUserAsync(principal).ConfigureAwait(false);
+        try
+        {
+            var claimPrinciple = new ClaimsPrincipal(new List<ClaimsIdentity>()
+            {
+                new ClaimsIdentity(new List<Claim>
+                {
+                    new Claim(ClaimTypes.NameIdentifier, userGuid.ToString())
+                })
+            });
+            var cognitoUser = await _userManager.GetUserAsync(claimPrinciple).ConfigureAwait(false);
+        
+            //Map Response
+            return _mapper.Map<Core::User>(cognitoUser);
+        }
+        catch (Exception ex)
+        {
+            //TODO: Log Error    
+            throw new ExternalServiceException("Exception occured retrieving Cognito user", ex);
+        }
     }
 }

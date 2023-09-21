@@ -6,31 +6,9 @@
     <projectFile profileName="User.API">User.API/User.API.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef7880e7-2343-4baa-8644-edac1a77fbd2" name="Changes" comment="Created Core and service projects. Added User Controller and Update password operation">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Cognito.Test.API/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Cognito.Test.API/.idea/aws.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Cognito.Test.API/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Cognito.Test.API/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API.Core/Bootstrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.API.Core/Bootstrapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API.Core/Cognito.Test.API.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/User.API.Core/User.API.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API.Core/Models/Result.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.API.Core/Models/Result.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API.Core/Operations/Users/IChangePasswordOperation.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API.Core/UseCases/User/ChangePasswordUseCase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API.Core/UseCases/User/IChangePasswordUseCase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API.Service/Bootstrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.API.AWS.Cognito.Service/Bootstrapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API.Service/Cognito.Test.API.Service.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/User.API.AWS.Cognito.Service/User.API.AWS.Cognito.Service.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API.Service/Models/ExternalServiceException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.API.AWS.Cognito.Service/Models/ExternalServiceException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API.Service/Operations/Users/ChangePasswordOperation.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API.sln" beforeDir="false" afterPath="$PROJECT_DIR$/User.API.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API/Authorization/CognitoGroupAuthorizationHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.API/Authorization/CognitoGroupAuthorizationHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API/Cognito.Test.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/User.API/User.API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API/Controllers/TestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.API/Controllers/TestController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.API/Controllers/UserController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/User.API/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API/Models/ChangeUserPasswordRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.API/DtoModels/ChangeUserPasswordRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/User.API/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cognito.Test.API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/User.API/appsettings.json" afterDir="false" />
+    <list default="true" id="ef7880e7-2343-4baa-8644-edac1a77fbd2" name="Changes" comment="Refactor to repository service architecture pattern">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Cognito.Test.API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cognito.Test.API/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.API/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.API/Controllers/UserController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +63,7 @@
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="SWEA" />
   </component>
   <component name="ProjectId" id="2VLCyeCJ7723mXkrhEselPWS23c" />
   <component name="ProjectLevelVcsManager">
@@ -172,7 +150,7 @@
       <workItem from="1694607229129" duration="8297000" />
       <workItem from="1694685157825" duration="7538000" />
       <workItem from="1695022583940" duration="14983000" />
-      <workItem from="1695108124244" duration="12944000" />
+      <workItem from="1695108124244" duration="13963000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1694606935059</created>
@@ -258,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695120980001</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Refactor to repository service architecture pattern">
+      <created>1695134999974</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1695134999974</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,77 +274,7 @@
     <MESSAGE value="Updated .gitignore" />
     <MESSAGE value="Integration with AWS cognito for user auth. Created custom auth handler to fix role authorization issue with cognito user groups" />
     <MESSAGE value="Created Core and service projects. Added User Controller and Update password operation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Core and service projects. Added User Controller and Update password operation" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/User.API/Controllers/TestController.cs</url>
-          <line>14</line>
-          <properties documentPath="$PROJECT_DIR$/Cognito.Test.API/Controllers/TestController.cs" initialLine="14" containingFunctionPresentation="method 'TestEndpoint'">
-            <startOffsets>
-              <option value="312" />
-            </startOffsets>
-            <endOffsets>
-              <option value="404" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/User.API/Authorization/CognitoGroupAuthorizationHandler.cs</url>
-          <line>8</line>
-          <properties documentPath="$PROJECT_DIR$/Cognito.Test.API/Authorization/CognitoGroupAuthorizationHandler.cs" initialLine="8" containingFunctionPresentation="method 'HandleRequirementAsync'">
-            <startOffsets>
-              <option value="371" />
-            </startOffsets>
-            <endOffsets>
-              <option value="372" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/User.API.AWS.Cognito.Service/Service/Users/ChangePasswordOperation.cs</url>
-          <line>24</line>
-          <properties documentPath="$PROJECT_DIR$/Cognito.Test.API.Service/Operations/Users/ChangePasswordOperation.cs" initialLine="23" containingFunctionPresentation="method 'ExecuteAsync'">
-            <startOffsets>
-              <option value="798" />
-            </startOffsets>
-            <endOffsets>
-              <option value="799" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/User.API.Core/Services/UserService/ChangePasswordUseCase.cs</url>
-          <line>15</line>
-          <properties documentPath="$PROJECT_DIR$/Cognito.Test.API.Core/UseCases/User/ChangePasswordUseCase.cs" initialLine="15" containingFunctionPresentation="method 'ExecuteAsync'">
-            <startOffsets>
-              <option value="537" />
-            </startOffsets>
-            <endOffsets>
-              <option value="538" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/User.API.AWS.Cognito.Service/Service/Users/ChangePasswordOperation.cs</url>
-          <line>29</line>
-          <properties documentPath="$PROJECT_DIR$/Cognito.Test.API.Service/Operations/Users/ChangePasswordOperation.cs" initialLine="29" containingFunctionPresentation="method 'ExecuteAsync'">
-            <startOffsets>
-              <option value="1073" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1103" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Refactor to repository service architecture pattern" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor to repository service architecture pattern" />
   </component>
 </project>
